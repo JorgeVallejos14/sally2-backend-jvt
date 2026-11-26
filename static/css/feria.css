@@ -1,0 +1,147 @@
+body {
+    background-color: #1d1030;
+    color: #f3ebff;
+    font-family: 'Trebuchet MS', sans-serif;
+    margin: 0;
+}
+
+header {
+    background-color: #12091f;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 4px solid #ffd166;
+}
+
+header h1 {
+    color: #ffd166;
+    margin: 0 0 10px 0;
+}
+
+nav a {
+    color: #f3ebff;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #ffd166;
+}
+
+main {
+    max-width: 980px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.filtros input,
+.filtros select,
+.filtros button {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: none;
+}
+
+.filtros button {
+    background-color: #ffd166;
+    color: #12091f;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.filtros a {
+    color: #f3ebff;
+    align-self: center;
+}
+
+.lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.tarjeta {
+    background-color: #2e1a4d;
+    border-radius: 10px;
+    padding: 14px;
+    width: 220px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.afiche {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.tarjeta h3 {
+    color: #ffd166;
+    font-size: 1.05rem;
+    margin: 10px 0 4px 0;
+}
+
+.precio {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 4px 0;
+}
+
+.categoria {
+    display: inline-block;
+    background-color: #ffd166;
+    color: #12091f;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.tarjeta a,
+.boton {
+    display: inline-block;
+    margin-top: 8px;
+    background-color: #ffd166;
+    color: #12091f;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.detalle {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.afiche-grande {
+    width: 100%;
+    max-width: 340px;
+    border-radius: 10px;
+}
+
+.info {
+    flex: 1;
+    min-width: 280px;
+}
+
+.datos {
+    list-style: none;
+    padding: 0;
+}
+
+.datos li {
+    background-color: #2e1a4d;
+    margin: 8px 0;
+    padding: 10px;
+    border-radius: 6px;
+}

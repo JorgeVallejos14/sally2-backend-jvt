@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block titulo %}{{ espectaculo.titulo }}{% endblock %}
+
+{% block contenido %}
+    <div class="detalle">
+        <img src="{{ espectaculo.afiche.url }}" alt="{{ espectaculo.titulo }}" class="afiche-grande">
+
+        <div class="info">
+            <span class="categoria">{{ espectaculo.categoria.nombre }}</span>
+            <h2>{{ espectaculo.titulo }}</h2>
+            <ul class="datos">
+                <li>Precio de la entrada: <strong>{{ espectaculo.precio_clp }}</strong></li>
+                <li>Duracion: {{ espectaculo.duracion_min }} minutos</li>
+                <li>Sala: {{ espectaculo.sala }}</li>
+            </ul>
+            {{ espectaculo.descripcion|default:"Sin descripcion."|linebreaks }}
+
+            <a href="{% url 'cartelera:inicio' %}" class="boton">Volver a la cartelera</a>
+        </div>
+    </div>
+{% endblock %}

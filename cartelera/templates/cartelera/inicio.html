@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Cartelera - Feria de Knothole{% endblock %}
+
+{% block contenido %}
+    <h2>Cartelera</h2>
+
+    <form method="get" class="filtros">
+        <input type="text" name="q" value="{{ q }}" placeholder="Buscar por titulo">
+        <select name="categoria">
+            <option value="">Todas las categorias</option>
+            {% for c in categorias %}
+                <option value="{{ c.id }}" {% if categoria_sel == c.id|stringformat:"d" %}selected{% endif %}>{{ c.nombre }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Buscar</button>
+        <a href="{% url 'cartelera:inicio' %}">Limpiar</a>
+    </form>
+
+    <div class="lista">
+    {% for e in espectaculos %}
+        <div class="tarjeta">
+            <img src="{{ e.afiche.url }}" alt="{{ e.titulo }}" class="afiche">
+            <span class="categoria">{{ e.categoria.nombre }}</span>
+            <h3>{{ e.titulo }}</h3>
+            <p class="precio">{{ e.precio_clp }}</p>
+            <a href="{% url 'cartelera:detalle' e.id %}">Ver detalle</a>
+        </div>
+    {% empty %}
+        <p>No hay espectaculos que coincidan con la busqueda.</p>
+    {% endfor %}
+    </div>
+{% endblock %}
