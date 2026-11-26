@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Ticket {{ ticket.codigo }}{% endblock %}
+
+{% block contenido %}
+    <div class="ticket">
+        <h2>Tu ticket</h2>
+        <p class="codigo">{{ ticket.codigo }}</p>
+
+        <ul class="datos">
+            <li>Espectaculo: <strong>{{ ticket.espectaculo.titulo }}</strong></li>
+            <li>Comprador: {{ ticket.nombre }}</li>
+            <li>Correo: {{ ticket.email }}</li>
+            <li>Cantidad de entradas: {{ ticket.cantidad }}</li>
+            <li>Total pagado: <strong>{{ ticket.total_clp }}</strong></li>
+            <li>Fecha y hora de compra: {{ ticket.creado|date:"d/m/Y H:i" }}</li>
+        </ul>
+
+        <a href="{% url 'cartelera:inicio' %}" class="boton">Volver a la cartelera</a>
+    </div>
+{% endblock %}

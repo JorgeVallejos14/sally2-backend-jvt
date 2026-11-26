@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Categoria, Espectaculo
+from django.shortcuts import render, get_object_or_404, redirect
+from .forms import TicketForm
+from .models import Categoria, Espectaculo, Ticket
 
 # Create your views here.
 def inicio(request):
@@ -30,4 +31,24 @@ def detalle(request, id):
         id=id,
         en_cartelera=True,
     )
-    return render(request, 'cartelera/detalle.html', {'espectaculo': espectaculo})
+
+    if request.method == 'POST':
+        form = TicketForm(request.POST)
+        if form.is_valid():
+            ticket = form.save(commit=False)
+            ticket.espectaculo = espectaculo
+            ticket.save()
+            return redirect('cartelera:ticket', codigo=ticket.codigo)
+    else:
+        form = TicketForm(initial={'cantidad': 1})
+
+    contexto = {'espectaculo': espectaculo, 'form': form}
+    return render(request, 'cartelera/detalle.html', contexto)
+
+
+def ticket(request, codigo):
+    ticket = get_object_or_404(
+        Ticket.objects.select_related('espectaculo'),
+        codigo=codigo,
+    )
+    return render(request, 'cartelera/ticket.html', {'ticket': ticket})
